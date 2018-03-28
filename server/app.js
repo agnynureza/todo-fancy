@@ -1,15 +1,17 @@
-//dependaci
-const express = require('express'),
-      bodyParser = require('body-parser'),
-      app = express(),
-      mongoose = require('mongoose'),
-      todos = require('./routes/index'),
-      users = require('./routes/users')
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const mongoose = require('mongoose')
+
 
 require('dotenv').config()
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }))
+
+const todos = require('./routes/index')
+const users = require('./routes/users')
 
 app.use('/',todos)
 app.use('/users',users)
@@ -20,4 +22,6 @@ mongoose.connect(dburl,err=>{
     if(!err) console.log('connected to database !')
     else throw new error(err)
 })
-app.listen(3000,()=>console.log('server up !'))
+// app.listen(3000,()=>console.log('server up !'))
+
+module.exports = app

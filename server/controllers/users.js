@@ -1,13 +1,10 @@
-const User      = require('../models/User')
 const bcrypt    = require('bcrypt')
 const jwt       = require('jsonwebtoken')
 const saltRound = 10
 const FB        = require('fb')
-FB.api('/me', function(response) {
-  console.log('Successful login for: ' + response.name);
-  document.getElementById('status').innerHTML =
-    'Thanks for logging in, ' + response.name + '!';
-});
+const User      = require('../models/user')
+
+
 module.exports = {
     signInFb : (req,res) => {
       FB.api('me', { fields: ['id' , 'name', 'email', 'gender', 'picture'], access_token: req.headers.fb_token }, function (userFbData) {

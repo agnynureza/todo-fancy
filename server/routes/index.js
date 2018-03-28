@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {createTodo,readTodo,updateTodo,updateStatus,deleteTodo} = require('../controllers/index')
+const {addTodo,readTodo,updateTodo,deleteTodo} = require('../controllers/index')
 
-router.post('/',createTodo)
-router.get('/',readTodo)
-router.put('/:id',deleteTodo)
+router.post('/todo',addTodo)
+router.get('/todo',readTodo)
+router.put('/:id',updateTodo)
 router.delete('/:id',deleteTodo)
 
 
